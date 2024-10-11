@@ -44,14 +44,17 @@ a {
     color: #ffffff;
 }
 
-.card {
-    color: black;
+.card-body {
+    background-color: #5a828c;
+    color: #6e0404;
     text-align: left;
 }
 
 .card-title {
     font-weight: 700;
 }
+
+
 
 .bg-3 {
     background-color: #000000; /* Black */
