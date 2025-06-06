@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
 
 </head>
 
@@ -49,7 +50,19 @@
             <p>The "Freedom Project" for SEP11 is a year-long project all about making something using JavaScript along with a third-party JS tool.</p>
             <h2>Content</h2>
             <p>For this project, I chose to make a soccer game because I enjoy watching and playing soccer. As my third-party JS tool, I used <a href="https://p5play.org/">p5play</a> which is "an introduction to Object Oriented Programming". My game has two players, the red player moves with WASD and shoots with "x" while the blue player moves with the Arrow Keys and shoots with "l". It also has a timer which has a limit of 5 minutes and a score with a limit of 3 goals.</p>
-            <p>More text about the project.</p>
+            <h2>Reflection</h2>
+            <h4>Challenges</h4>
+            <p>A challenge I faced while making my project was getting to timer to work. For the timer, I wanted it to count up to 5 minutes. While I was able to make it count up, it would continue displaying the amount of seconds that had past rather than the minutes and seconds. After a few attempts, I looked at my notes and remembered about mod (<code class="language-JS">%</code>) which gives the remainder of the division of two numbers. With this, I was able to make the timer run correctly up to 4 minutes and displayed the timer with <code class="language-JS">text('4:' + timerValue %60, width/2 -300, height/ 10)</code>. Another challenge I faced was getting the score to work. Whenever a player would score a goal, I would need to give that player a point and I wanted to display the score on the screen. At first I created a score variable for each player and when the condition that the ball was inside the net was true, I would run <code class="language-JS">score1++</code> or <code class="language-JS">score2++</code>. However I didn't yet know how to make it display on the screen and this code would increase the score to infinity. After reviewing the p5play website, I found <code class="language-JS">text()</code> which allows you to show text on the screen. This was important for me to add the timer and the score. Not only this, but I figured I needed to add a reset function to my game so when there is a goal the game resets and the score is immediately updated. The reset function helped with the issue of the scores going to infinity and the text helped me display the updated score. Below is the code that makes the score work with comments that explain them.</p>
+            <pre><code class="language-JS">
+                if(ball.x < 250 && ball.x > 200 && ball.y > 300 && ball.y < 500) { // check for player2 scoring
+                    score2++; // increase score
+                    reset(); // reset positions
+                } else if(ball.x > 1550 && ball.x < 1600 && ball.y > 300 && ball.y < 500) { // check for player1 scoring
+                    score1++; // increase score
+                    reset(); // reset positions
+                }
+                text(score1 + " - " + score2, width/2 + 300, height/10) // display the updated score
+            </code></pre>
             <a href="#">Link about the project</a><br>
 
             <!--EXAMPLE OF PREVIEW LINK-->
